@@ -18,33 +18,6 @@ def scale(x):
     return 1 if x > 0 else 0
 
 
-def draw(i):
-    for j in range(len(grid[0]) - 1):
-        a = (int(square_size * (j + 0.5)), int(square_size * i))
-        b = (int(square_size * (j + 1)), int(square_size * (i + 0.5)))
-        c = (int(square_size * (j + 0.5)), int(square_size * (i + 1)))
-        d = (int(square_size * j), int(square_size * (i + 0.5)))
-
-        x = (
-            grid[i][j]
-            + 2 * grid[i][j + 1]
-            + 4 * grid[i + 1][j + 1]
-            + 8 * grid[i + 1][j]
-        )
-        if x == 1 or x == 10 or x == 14:
-            pygame.draw.line(screen, WHITE, a, d, weight)
-        if x == 2 or x == 5 or x == 13:
-            pygame.draw.line(screen, WHITE, a, b, weight)
-        if x == 4 or x == 10 or x == 11:
-            pygame.draw.line(screen, WHITE, b, c, weight)
-        if x == 5 or x == 7 or x == 8:
-            pygame.draw.line(screen, WHITE, c, d, weight)
-        if x == 3 or x == 12:
-            pygame.draw.line(screen, WHITE, b, d, weight)
-        if x == 6 or x == 9:
-            pygame.draw.line(screen, WHITE, a, c, weight)
-
-
 pygame.init()
 
 if fullscreen:
